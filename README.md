@@ -8,7 +8,7 @@ Steps to follow in order to run automated tests:
 ``` npm i gulp -g ```
 3. Download dependencies by running the following command from the project root folder:
 ``` npm i ```
-4. Run tests with the following command from the project /src folder:
+4. Run tests with the following command from the project root folder:
    ``` gulp ```
 
 Generated report can be found in ./report/report.html

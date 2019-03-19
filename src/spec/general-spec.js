@@ -60,7 +60,7 @@ describe('stackexchange API check for question/moderators/comments endpoints: ',
 
     it('get moderators for a non-existing site', async () => {
         const nonExistingSiteName = 'I don\'t exist';
-        const moderatorsResponse = await rest.getModerators('I don\'t exist');
+        const moderatorsResponse = await rest.getModerators(nonExistingSiteName);
         const moderatorsResponseBody = moderatorsResponse.body;
 
         expect(moderatorsResponse.statusCode).toBe(400);

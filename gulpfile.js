@@ -4,10 +4,9 @@ const reportDir = './report';
 const HtmlReporter = require('jasmine-pretty-html-reporter').Reporter;
 
 gulp.task('test', () => {
-    const specsSrc = gulp.src('spec/*-spec.js');
+    const specsSrc = gulp.src('src/spec/*-spec.js');
     let specs;
     const toJasmine = jasmine({
-        configFile: 'spec/support/jasmine.json',
         reporter: new HtmlReporter({
             path: reportDir
         }),
