@@ -5,22 +5,14 @@ const HtmlReporter = require('jasmine-pretty-html-reporter').Reporter;
 
 gulp.task('test', () => {
     const specsSrc = gulp.src('src/spec/*-spec.js');
-    let specs;
-    const toJasmine = jasmine({
+    const jasmineConfig = jasmine({
         reporter: new HtmlReporter({
             path: reportDir
         }),
         timeout: 30 * 1000,
     });
 
-    specs = specsSrc.pipe(toJasmine);
-
-    return specs.on('end', function () {
-        process.exit(0);
-    }).on('error', function (err) {
-        console.log(err);
-        process.exit(1);
-    });
+    return specsSrc.pipe(jasmineConfig);
 });
 
 gulp.task('default', ['test']);

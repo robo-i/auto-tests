@@ -2,7 +2,7 @@ const sites = require('../test-data/sites.json').sites;
 const commentsIds = require('../test-data/comments-ids.json').ids;
 const rest = require('../utils/rest-utils');
 
-describe('stackexchange API check for question/moderators/comments endpoints: ', () => {
+describe('check stackexchange question/moderators/comments endpoints: ', () => {
     const urlRegexp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     const numberRegexp = /\d{1,}/;
 
@@ -39,7 +39,7 @@ describe('stackexchange API check for question/moderators/comments endpoints: ',
             const commentsItems = commentsResponse.body.items[0];
 
             expect(commentsResponse.statusCode).toBe(200);
-            expect(commentsResponse.body.items.length).toBeGreaterThan(0);
+            expect(commentsResponseBody.items.length).toBeGreaterThan(0);
             expect(commentsItems.owner.reputation).toMatch(numberRegexp);
             expect(commentsItems.owner.user_id).toMatch(numberRegexp);
             expect(commentsItems.owner.user_type).toEqual(jasmine.any(String));
