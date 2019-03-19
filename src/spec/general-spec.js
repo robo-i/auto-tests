@@ -58,7 +58,7 @@ describe('check stackexchange question/moderators/comments endpoints: ', () => {
         }));
     });
 
-    it('get moderators for a non-existing site', async () => {
+    it('get moderators of a non-existing site', async () => {
         const nonExistingSiteName = 'I don\'t exist';
         const moderatorsResponse = await rest.getModerators(nonExistingSiteName);
         const moderatorsResponseBody = moderatorsResponse.body;
