@@ -3,15 +3,12 @@ jobs:
   test:
     working_directory: ~/auto-tests
     docker:
-      - image: node
+      - image: miroslawmajka/node-gulp
     steps:
       - checkout
       - run:
           name: Update npm
           command: 'npm i -g npm@latest'
-      - run:
-          name: Install gulp
-          command: 'npm i -g gulp'
       - run:
           name: Install dependencies
           command: 'npm i'
