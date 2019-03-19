@@ -1,0 +1,28 @@
+version: 2.1
+jobs:
+  test:
+    working_directory: ~/auto-tests
+    docker:
+      - image: coveo/node-chrome-dockerbuild
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'npm i -g npm@latest'
+      - run:
+          name: Install gulp
+          command: 'npm i -g gulp'
+      - run:
+          name: Install dependencies
+          command: 'npm i'
+      - run:
+          name: Test
+          command: 'gulp'
+      - store_artifacts:
+          path: ./report/report.html
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
