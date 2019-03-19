@@ -3,7 +3,7 @@ jobs:
   test:
     working_directory: ~/auto-tests
     docker:
-      - image: miroslawmajka/node-gulp
+      - image: mpowleslandcook/node10-gulp
     steps:
       - checkout
       - run:
