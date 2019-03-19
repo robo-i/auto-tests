@@ -10,7 +10,6 @@ describe('stackexchange API check for question/moderators/comments endpoints: ',
         await Promise.all(sites.map(async (site) => {
             const questionsResponse = await rest.getQuestions(site);
             const questionToCheck = questionsResponse.body.items[0];
-            console.log('!!!', questionsResponse.body);
 
             expect(questionsResponse.statusCode).toBe(200);
             expect(questionsResponse.body.items.length).toBeGreaterThan(0);
@@ -35,38 +34,38 @@ describe('stackexchange API check for question/moderators/comments endpoints: ',
 
     it('get comments with {ids}', async () => {
         await Promise.all(commentsIds.map(async (id) => {
-            const questionsResponse = await rest.getCommentWithId(id, 'law');
-            const responseBody = questionsResponse.body;
-            const responseBodyItems = questionsResponse.body.items[0];
+            const commentsResponse = await rest.getCommentWithId(id, 'law');
+            const commentsResponseBody = commentsResponse.body;
+            const commentsItems = commentsResponse.body.items[0];
 
-            expect(questionsResponse.statusCode).toBe(200);
-            expect(questionsResponse.body.items.length).toBeGreaterThan(0);
-            expect(responseBodyItems.owner.reputation).toMatch(numberRegexp);
-            expect(responseBodyItems.owner.user_id).toMatch(numberRegexp);
-            expect(responseBodyItems.owner.user_type).toEqual(jasmine.any(String));
-            expect(responseBodyItems.owner.accept_rate).toMatch(numberRegexp);
-            expect(responseBodyItems.owner.profile_image).toMatch(urlRegexp);
-            expect(responseBodyItems.owner.display_name).toEqual(jasmine.any(String));
-            expect(responseBodyItems.owner.link).toMatch(urlRegexp);
-            expect(responseBodyItems.edited).toEqual(jasmine.any(Boolean));
-            expect(responseBodyItems.score).toMatch(numberRegexp);
-            expect(responseBodyItems.creation_date).toMatch(numberRegexp);
-            expect(responseBodyItems.post_id).toMatch(numberRegexp);
-            expect(responseBodyItems.comment_id).toMatch(numberRegexp);
-            expect(responseBody.has_more).toEqual(jasmine.any(Boolean));
-            expect(responseBody.quota_max).toMatch(numberRegexp);
-            expect(responseBody.quota_remaining).toMatch(numberRegexp);
+            expect(commentsResponse.statusCode).toBe(200);
+            expect(commentsResponse.body.items.length).toBeGreaterThan(0);
+            expect(commentsItems.owner.reputation).toMatch(numberRegexp);
+            expect(commentsItems.owner.user_id).toMatch(numberRegexp);
+            expect(commentsItems.owner.user_type).toEqual(jasmine.any(String));
+            expect(commentsItems.owner.accept_rate).toMatch(numberRegexp);
+            expect(commentsItems.owner.profile_image).toMatch(urlRegexp);
+            expect(commentsItems.owner.display_name).toEqual(jasmine.any(String));
+            expect(commentsItems.owner.link).toMatch(urlRegexp);
+            expect(commentsItems.edited).toEqual(jasmine.any(Boolean));
+            expect(commentsItems.score).toMatch(numberRegexp);
+            expect(commentsItems.creation_date).toMatch(numberRegexp);
+            expect(commentsItems.post_id).toMatch(numberRegexp);
+            expect(commentsItems.comment_id).toMatch(numberRegexp);
+            expect(commentsResponseBody.has_more).toEqual(jasmine.any(Boolean));
+            expect(commentsResponseBody.quota_max).toMatch(numberRegexp);
+            expect(commentsResponseBody.quota_remaining).toMatch(numberRegexp);
         }));
     });
 
     it('get moderators for a non-existing site', async () => {
         const nonExistingSiteName = 'I don\'t exist';
-        const questionsResponse = await rest.getModerators('I don\'t exist');
-        const responseToCheck = questionsResponse.body;
+        const moderatorsResponse = await rest.getModerators('I don\'t exist');
+        const moderatorsResponseBody = moderatorsResponse.body;
 
-        expect(questionsResponse.statusCode).toBe(400);
-        expect(responseToCheck.error_id).toBe(400);
-        expect(responseToCheck.error_message).toEqual(`No site found for name \`${nonExistingSiteName}\``);
-        expect(responseToCheck.error_name).toEqual('bad_parameter');
+        expect(moderatorsResponse.statusCode).toBe(400);
+        expect(moderatorsResponseBody.error_id).toBe(400);
+        expect(moderatorsResponseBody.error_message).toEqual(`No site found for name \`${nonExistingSiteName}\``);
+        expect(moderatorsResponseBody.error_name).toEqual('bad_parameter');
     });
 });

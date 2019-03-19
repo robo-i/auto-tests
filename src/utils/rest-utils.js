@@ -12,13 +12,11 @@ module.exports = {
 
     getModerators(site) {
         return unirest.get(this.getUrl('/users/moderators'))
-            .query(`site=${site}`)
-            .then(res => console.log('!!!', res.body));
+            .query(`site=${site}`);
     },
 
     getCommentWithId(id, site) {
         return unirest.get(this.getUrl(`/comments/${id}`))
-            .query(`site=${site}`)
-            .then(res => console.log('!!!', res.body));
+            .query(`site=${site}`);
     }
 };
