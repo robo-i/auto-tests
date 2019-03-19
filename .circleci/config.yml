@@ -3,7 +3,7 @@ jobs:
   test:
     working_directory: ~/auto-tests
     docker:
-      - image: mpowleslandcook/node10-gulp
+      - image: analogmemory/am-docker-node-gulp
     steps:
       - checkout
       - run:

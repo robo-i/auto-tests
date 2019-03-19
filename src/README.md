@@ -11,4 +11,4 @@ Steps to follow in order to run automated tests:
 4. Run tests with the following command from the project /src folder:
    ``` gulp ```
 
-Generated report can be found in ./tmp/report.html
+Generated report can be found in ./report/report.html

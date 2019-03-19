@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const jasmine = require('gulp-jasmine');
-const reporters = require('jasmine-reporters');
 const reportDir = './report';
 const HtmlReporter = require('jasmine-pretty-html-reporter').Reporter;
 
