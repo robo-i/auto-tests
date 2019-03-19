@@ -1,0 +1,4 @@
+.idea/*
+/report
+debug.log
+node_modules/
