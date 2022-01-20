@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "lib": [ "es2017" ],
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "strict": true,
+    "outDir": "../out-tsc/app"
+  },
+  "types": [
+    "jasmine",
+    "jasminewd2",
+    "node"
+  ],
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/out",
+    "**/e2e/*.ts",
+    "**/*.e2e-spec.ts",
+    "**/*.po.ts"
+  ]
+}
