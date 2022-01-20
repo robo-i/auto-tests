@@ -15,7 +15,8 @@ export abstract class BasicPage<T extends BasicPage<T>> {
     await this.acceptCookies();
   };
 
-  // is there a better way to do that?
+  // ideally, should be done via browser.manage().addCookie('c1', 'c2', '/', domain);
+  // but for this needed cookies are to be known
   public async acceptCookies(): Promise<void> {
     await waitUntilVisible(this.cookies, 'Cookies are not shown');
     await browser.executeScript('arguments[0].click();', this.cookies);
