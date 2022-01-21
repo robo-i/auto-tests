@@ -24,16 +24,13 @@ export function findElementByText(selector: string, text: string): ElementFinder
 }
 
 export async function waitUntilVisible(element: ElementFinder, errorMessage?: string): Promise<void> {
-    await browser.driver.wait(async () =>
-        await browser.wait(EC.visibilityOf(element), browser.params.longTimeout, errorMessage));
+    await browser.driver.wait(EC.visibilityOf(element), browser.params.longTimeout, errorMessage);
 }
 
 export async function waitUntilTextPresentInElement(element: ElementFinder, text: string, errorMessage?: string): Promise<void> {
-    await browser.driver.wait(async () =>
-        await browser.wait(EC.textToBePresentInElement(element, text), browser.params.longTimeout, errorMessage));
+    await browser.driver.wait(EC.textToBePresentInElement(element, text), browser.params.longTimeout, errorMessage);
 }
 
 export async function waitUntilClickable(element: ElementFinder, errorMessage?: string): Promise<void> {
-    await browser.driver.wait(async () =>
-        await browser.wait(EC.elementToBeClickable(element), browser.params.shortTimeout, errorMessage));
+    await browser.driver.wait(EC.elementToBeClickable(element), browser.params.shortTimeout, errorMessage);
 }
