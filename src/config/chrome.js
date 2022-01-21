@@ -6,9 +6,9 @@ config.capabilities = {
   maxInstances: 1,
   'goog:chromeOptions': {
     args: [
-      '--headless',
+      // '--headless',
       '--disable-gpu',
-      '--window-size=1500,1000',
+      '--window-size=1700,1100',
       '--disable-infobars',
       '--no-sandbox',],
   },
