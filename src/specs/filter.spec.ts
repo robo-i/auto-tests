@@ -5,7 +5,6 @@ describe('filter cars: ', () => {
 
     beforeAll(async () => {
         await ourVehiclesPage.open();
-        await ourVehiclesPage.waitForPageToLoad();
     });
 
     afterEach(async () => {
@@ -39,6 +38,6 @@ describe('filter cars: ', () => {
         await ourVehiclesPage.searchbox.search('Zzz');
 
         expect(await ourVehiclesPage.getNothingFoundMsg()).toBe(expectedNoResultsMessage, 'Incorrect no results message');
-        expect(await ourVehiclesPage.getTryAgainMsg()).toBe(expectedTryAgainMessage, 'Incorrect no results message');
+        expect(await ourVehiclesPage.getTryAgainMsg()).toBe(expectedTryAgainMessage, 'Incorrect try again message');
     });
 });

@@ -21,9 +21,7 @@ export class DropdownMultipleSelect {
 
   public async selectSeveralOptions(values: string[]): Promise<void> {
     await this.expand();
-    for (let value of values) {
-      await this.selectOption(value);
-    }
+    values.forEach(async value => await this.selectOption(value));
   }
 
   public async expand() {

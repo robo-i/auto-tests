@@ -1,5 +1,5 @@
 import {$, $$, ElementArrayFinder} from 'protractor';
-import {findElementByText, waitUntilVisible} from "../../utils/misc-utils";
+import {findElementByText, waitUntilTextPresentInElement, waitUntilVisible} from "../../utils/misc-utils";
 import {DropdownMultipleSelect} from "../entities/dropdown-multiple-select";
 import {BasicPage} from "../basic.po";
 import {CarDetails} from "../entities/car-details";
@@ -14,7 +14,7 @@ export class OurVehiclesPo extends BasicPage<OurVehiclesPo> {
     public readonly resetFiltersBtn = $('[data-key="resetFilters"]');
     public readonly nothingFoundMessage = $('[data-key="features.showroom.search.noresults"]');
     public readonly tryAgainMessage = $('[data-key="features.showroom.search.tryagain"]');
-    public readonly carsToChooseFromSelector = '[data-key="features.showroom.toChooseFrom"]';
+    public readonly carsToChooseFromSelector = $$('[data-key="features.showroom.toChooseFrom"]').first();
 
     public constructor() {
         super('/business/showroom/');
@@ -24,9 +24,8 @@ export class OurVehiclesPo extends BasicPage<OurVehiclesPo> {
         await $(`[data-key=${type}]`).click();
     }
 
-    // a workaround to wait for a needed amount of cars
     public async getFilteredCards(size: number): Promise<ElementArrayFinder> {
-        await waitUntilVisible(findElementByText(this.carsToChooseFromSelector, `${size} to choose from`),
+        await waitUntilTextPresentInElement(this.carsToChooseFromSelector, `${size} to choose from`,
             'Expected amount of cars is not filtered');
         return this.carProfiles;
     }

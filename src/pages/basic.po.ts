@@ -13,6 +13,7 @@ export abstract class BasicPage<T extends BasicPage<T>> {
   public async open(): Promise<void> {
     await browser.get(this.pageUrl);
     await this.acceptCookies();
+    await this.waitForPageToLoad();
   };
 
   // ideally, should be done via browser.manage().addCookie('c1', 'c2', '/', domain);

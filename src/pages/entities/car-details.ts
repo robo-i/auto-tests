@@ -10,10 +10,10 @@ export class CarDetails {
     }
 
     public async getDescription(): Promise<string> {
-        return this._root.$(this._descriptionSelector).getText();
+        return this._root.$$(this._descriptionSelector).first().getText();
     }
 
     public async getPrice(): Promise<string> {
-        return this._root.$(this._priceSelector).getText();
+        return this._root.$$(this._priceSelector).first().getText();
     }
 }
